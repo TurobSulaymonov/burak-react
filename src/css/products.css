@@ -1,7 +1,11 @@
 /** PRODUCTS **/
+.products {
+  width: 100%;
+  height: auto;
+}
 .products .avatar-txt-srch {
     margin-top: 30px;
-    width: 1300px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -14,29 +18,27 @@
   }
   
   .products .avatar-txt-srch .inputs {
-    width: auto;
-    height: auto;
+    width: 370px;
+    height: 36px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: end;
     position: absolute;
+    border: none;
     right: 200px;
+   
   }
   .products .avatar-txt-srch .inputs .input-srch {
     width: 180px;
-    height: 20px;
-    padding: 12px;
+    height: 36px;
     border: none;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px lightslategray;
+    border-radius: 20px;
     cursor: text;
   }
   
   .products .avatar-txt-srch .inputs .input-btn {
-    width: 100px;
-    height: 25px;
-    padding: 5px;
+  
     border: none;
     border-radius: 10px;
     box-shadow: 1px 1px 5px lightslategray;
@@ -52,9 +54,9 @@
   
   .products .dishes-filter-section {
     margin-top: 30px;
-    width: 1100px;
-    height: 60px;
-    align-items: end;
+    width: 256px ;
+    height: 36px;
+    margin-left: 85%;
   }
   
   .products .dishes-filter-section .dishes-filter-box {
@@ -62,37 +64,36 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    margin: 10px;
     gap: 10px;
   }
   
   .products .dishes-filter-section .dishes-filter-box Button {
     width: 50px;
     height: 30px;
-    font-size: 0.8em;
+    font-size: 14px;
     font-weight: 700;
   }
   
 
   .products .list-category-section {
     margin-top: 30px;
-    margin-left: 70px;
-    width: 1100px;
-    height: 600px;
+    margin-left: 10%;
+    width: 100%;
+    height: 1014px;
   }
   
   .products .list-category-section .gategory-main {
     width: 500px;
     transform: rotate(270deg);
     position: relative;
-    top: 180px;
-    left: -290px;
+    top: 150px;
+    right: 23%; 
     border-radius: 20px;
   }
   
   .products .list-category-section .gategory-main Button {
-    width: 55px;
-    height: 30px;
+    width: 40px;
+    height: 36px;
     margin: 5px;
     font-size: 12px;
     font-weight: 600;
@@ -100,11 +101,12 @@
 
   
  .products .product-wrapper {
-    width: 1100px;
-    height: 1000px;
+    width: 100%;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    flex-direction: row;
+    gap: 50px;
   }
   
   .products  .product-wrapper .product-card {
@@ -114,8 +116,8 @@
   }
   
   .products  .product-wrapper .product-card .product-img {
-    width: 250px;
-    height: 250px;
+    width: 273px;
+    height: 275px;
     background-size: cover;
     background-repeat: no-repeat;
     border-top-right-radius: 35px;
@@ -123,6 +125,7 @@
   
   .products  .product-wrapper .product-card .product-sale {
     margin-top: 20px;
+    margin-left: 12px;
     width: 130px;
     height: 30px;
     border-radius: 35px;
@@ -170,7 +173,7 @@
     opacity: 0;
   }
   
-  .products  .product-wrapper .product-card .hover-btns :hover {
+  .products  .product-wrapper .product-card .hover-btns:hover {
     opacity: 1;
   }
   
@@ -179,6 +182,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    font-size: 1.5rem;
     font-weight: 700;
   }
   
@@ -191,31 +195,38 @@
   }
   
   .products  .product-wrapper .no-data {
-    color: #d7b586;
-    font-size: 40px;
+    width:100%;
+    height: 300px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    align-items: center;
+    align-items:center;
+    text-transform: capitalize;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400px;
+    font-size: 30px;
+    line-height: 34px;
+    color: #e3c08d;
   }
   
   .products  .pagination-section {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 10%;
   }
   
 
   
   .products .brands-logo {
-    margin-top: -310px;
-    width: 1300;
-    height: 500px;
-    background: rgb(18, 18, 18);
+    margin-top: -30%;
+   width: 100%;
+   height: 640px;
+   background: rgb(18, 18, 18);
   }
   
-  .products .brands-logo .brand-txt {
-  
+  .products .brands-logo .brand-title .brand-txt{
+    margin-top: 30px;
     font-size: 30px;
     color: #d7b586;
     text-align: center;
@@ -224,6 +235,7 @@
   }
   
   .products .brands-logo .brand-all-box {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -239,10 +251,18 @@
     border-radius: 20px;
   }
   
-
+  
+  .products .address {
+    margin-top: 43px;
+    width: 100%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
   .products .address-area .title {
-    margin-top: 40px;
+    margin-top:30p;
     font-size: 30px;
     color: #3c3c3c;
     text-align: center;

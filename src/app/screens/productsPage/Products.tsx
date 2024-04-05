@@ -19,6 +19,10 @@ const products = [
   { productName: "Cutlet", imagePath: "/img/Cutlet.webp" },
   { productName: "Kebab", imagePath: "/img/kebab.webp" },
   { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
+  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
+
+ 
+
 ];
 
 export default function Products() {
@@ -37,10 +41,10 @@ export default function Products() {
                 type="search"
                 placeholder="Type here"
               />
-              <button className="input-btn">
+              <Button className="input-btn">
                 SEARCH
                 <SearchIcon />
-              </button>
+              </Button>
             </Stack>
           </Stack>
         </Stack>
@@ -156,7 +160,11 @@ export default function Products() {
       </Container>
       
       <div className={"brands-logo"}>
-        <Box className={"brand-txt"}>Our Famliy Brands</Box>
+        <Container>
+          <Stack className="brand-title">
+            <Box className={"brand-txt"}>Our Famliy Brands</Box>
+        </Stack>
+        
 
         <Stack className="brand-all-box">
           <Stack className="brand-box">
@@ -183,6 +191,7 @@ export default function Products() {
             </Stack>
           </Stack>
         </Stack>
+        </Container>
       </div>
      
       <div className={"address"}>
