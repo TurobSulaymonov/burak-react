@@ -24,7 +24,7 @@ class Test extends React.Component {
     // runs after first render => RETRIEVE DATA FROM BACKEND SERVER
   }
   componentWillUnmount() {
-    console.log("componentDidUnmount")
+    console.log("componentWillUnmount")
     // runs before first render
   }
   componentDidUpdate() {
