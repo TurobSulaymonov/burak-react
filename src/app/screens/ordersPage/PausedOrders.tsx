@@ -6,7 +6,7 @@ export default function PausedOrders () {
  return (
     <TabPanel value={"1"}>
         <Stack>
-            {[1,2].map((ele2,index) => {
+            {[1].map((ele2,index) => {
                 return(
                     <Box key={index}
                     className={"order-main-box"}
