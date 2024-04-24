@@ -5,23 +5,24 @@ import NewDishes from "./NewDishes";
 import Advertisement from "./Advertisement";
 import ActiveUsers from "./AcitveUsers";
 import Events from "./Events";
-import "../../../css/home.css"
-
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import {setPopularDishes} from "./slice";
+import {setNewDishes, setPopularDishes, setTopUsers} from "./slice";
 import { Product } from "../../../lib/types/product";
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
+import "../../../css/home.css";
 
 /* REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
-  setPopularDishes: (date: Product[]) => dispatch(setPopularDishes(date)),
+  setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
+  setNewDishes: (data: Product[]) => dispatch(setNewDishes(data)),
+
 });
 
 
 export default function HomePage() {
-  const {setPopularDishes} = actionDispatch(useDispatch());
+  const {setPopularDishes, setNewDishes} = actionDispatch(useDispatch());
 
  
  useEffect(() => {
@@ -40,7 +41,22 @@ export default function HomePage() {
   }) 
   .catch(err => 
     console.log("ERROR:", err)
-  )
+  );
+
+  product
+  .getProducts({
+    page: 1,
+    limit: 4,
+    order: "createdAt",
+   // productCollection: ProductCollection.DISH,
+  })
+  .then(date => {
+    console.log("Data haqida malumot:", date)
+    setNewDishes(date);
+  }) 
+  .catch(err => 
+    console.log("ERROR:", err)
+  );
 
  }, []);
 
