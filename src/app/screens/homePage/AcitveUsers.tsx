@@ -5,15 +5,21 @@ import { CssVarsProvider, Typography } from "@mui/joy";
 import CardOverflow from "@mui/joy/CardOverflow";
 import AspectRatio from "@mui/joy/AspectRatio";
 
-const activeUsers = [
-   {memberNick: "Martin", memberImage: "/img/martin.webp" },
-   {memberNick: "Justin", memberImage: "/img/justin.webp" },
-   {memberNick: "Rose", memberImage: "/img/rose.webp" },
-   {memberNick: "Nusret", memberImage: "/img/nusret.webp" }
+import { retrieveTopUsers } from "./selector";
+import { createSelector } from "@reduxjs/toolkit";
+import {  useSelector } from "react-redux";
+import { serverApi } from "../../../lib/config";
+   
+// REDUX SLICE & SELECTOR 
+    const topUsersRetriever = createSelector(
+        retrieveTopUsers,
+        (topUsers) => ({topUsers})
+      );
 
-];
+
 
 export default function ActiveUsers() {
+    const {topUsers} = useSelector(topUsersRetriever);
     return (
         <div className={"active-users-frame"}>
             <Container>
@@ -21,21 +27,22 @@ export default function ActiveUsers() {
                     <Box className={"category-title"}>Active Users</Box>
                     <Stack className={"cards-frame"}>
                         <CssVarsProvider>
-                            { activeUsers.length !== 0 ? (
-                                activeUsers.map((ele, index) => {
+                            { topUsers.length !== 0 ? (
+                                topUsers.map((member) => {
+                                    const imagePath = `${serverApi}/${member.memberImage}`
                                     return (
-                                        <Card key={index} variant="outlined" className={"card"}>
+                                        <Card key={member._id} variant="outlined" className={"card"}>
                                         <CardOverflow className={"user-size"}>
 
                                             <AspectRatio ratio="1">
-                                              <img src={ele.memberImage} alt="" />
+                                              <img src={imagePath} alt="" />
                                             </AspectRatio>
                                         </CardOverflow>
                                         <CardOverflow variant="soft" className={""}>
                                             <Stack className="info"> 
                                             <Stack flexDirection={"column"}>
                                                 <Typography className={"member-nickname"}>
-                                                    {ele.memberNick}
+                                                    {member.memberNick}
                                                 </Typography>
                                             </Stack>
                                              
