@@ -9,7 +9,7 @@ export default function ProductsPage() {
   console.log("products", products);
     return <div className={"products-page"}>
       <Switch>
-        <Route path={`${products.path}/:productsId`}>
+        <Route path={`${products.path}/:productId`}>
           <ChosenProduct />
         </Route>
         <Route path={`${products.path}`}>
