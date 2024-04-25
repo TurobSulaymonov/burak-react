@@ -185,7 +185,7 @@
     opacity: 1;
   }
   
-  .products  .product-wrapper .product-card .hover-btns .eye-icon {
+  .products  .product-wrapper .product-card   .hover-btns .eye-icon {
     position: absolute;
     bottom: 20px;
     position: relative;
@@ -193,6 +193,7 @@
     left: 210px;
     display: flex;
     opacity: 0;
+    
   }
   
   .products  .product-wrapper .product-card .hover-btns .eye {
@@ -205,7 +206,7 @@
     opacity: 0;
   }
   
-  .products  .product-wrapper .product-card .hover-btns:hover {
+  .products  .product-wrapper .product-card .hover-btns .eye-icon:hover {
     opacity: 1;
   }
   
