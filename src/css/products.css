@@ -130,12 +130,14 @@
 
   
  .products .product-wrapper {
-    width: 100%;
+  margin-bottom: 30px;  
+  width: 100%;
     height: auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 50px;
+
   }
   
   .products  .product-wrapper .product-card {
@@ -249,7 +251,7 @@
 
   
   .products .brands-logo {
-    margin-top: -30%;
+    margin-top: -50%;
    width: 100%;
    height: 640px;
    background: rgb(18, 18, 18);
