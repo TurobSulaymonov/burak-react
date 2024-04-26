@@ -60,7 +60,7 @@ export default function Products() {
       productSearch.search = "";
       setProductsSearch({...productSearch });
     }
-  })
+  }, [searchText])
 
  /* * HANDLERS * */
  const searchCollectionHandler = (collecion: ProductCollection) => {
@@ -68,6 +68,7 @@ export default function Products() {
    productSearch.productCollection = collecion;
    setProductsSearch({...productSearch});
  };
+ 
  const searchOrderHandler = (order:string) => {
   productSearch.page = 1;
   productSearch.order = order;
@@ -82,8 +83,8 @@ export default function Products() {
   const paginationHandler = (e: ChangeEvent<any>, value: number) => {
     productSearch.page = value;
     setProductsSearch({...productSearch});
-  }
-
+  };
+ 
   const chooseDishHandler = (id: string) => {
    history.push(`/products/${id}`);
   }
@@ -264,9 +265,10 @@ export default function Products() {
           <Stack className="pagination-section">
             <Pagination
               count={
-                products.length ! == 0 
+                products.length !== 0 
                 ? productSearch.page + 1
-                : productSearch.page 
+                : productSearch.page  
+              
               }
               page={productSearch.page}
               renderItem={(item) => (
