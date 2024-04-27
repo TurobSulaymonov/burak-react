@@ -22,6 +22,7 @@ import ProductService from "../../services/ProductService";
 import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/config";
+import { CartItem } from "../../../lib/types/search";
 
 /* REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -42,11 +43,16 @@ const actionDispatch = (dispatch: Dispatch) => ({
       (restaurant) => ({restaurant}),
     );
 
-export default function ChosenProduct() {
-  const {productId} = useParams<{productId: string}>();
-  const {setRestaurant, setChosenProduct} = actionDispatch(useDispatch());
-  const {chosenProduct } = useSelector(chosenProductRetriever);
-  const {restaurant} = useSelector(restaurantRetriever);
+    interface ChosenProductsProps {
+      onAdd: (item: CartItem) => void;
+     }
+
+export default function ChosenProduct(props: ChosenProductsProps) {
+  const {onAdd} = props,
+        {productId} = useParams<{productId: string}>(),
+        {setRestaurant, setChosenProduct} = actionDispatch(useDispatch()),
+        {chosenProduct } = useSelector(chosenProductRetriever),
+        {restaurant} = useSelector(restaurantRetriever);
 
   useEffect(() => {
     const product = new ProductService()
