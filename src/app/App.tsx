@@ -20,12 +20,12 @@ import "../css/footer.css"
 function App() {
   const location = useLocation();
   const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = useBasket()
-  const [signupOpen, setSignupOpren] = useState<boolean>(false);
+  const [signupOpen, setSignupOpen] = useState<boolean>(false);
   const [loginOpen, setLoginOpen] = useState<boolean>(false);
 
   /* HANDLERS */
 
-  const handleSignupClose = () => setSignupOpren(false);
+  const handleSignupClose = () => setSignupOpen(false);
   const handleLoginClose = () => setLoginOpen(false);
 
 
@@ -40,6 +40,8 @@ function App() {
     onRemove={onRemove} 
     onDelete={onDelete}  
      onDeleteAll={onDeleteAll}
+     setSignupOpen={setSignupOpen}
+     setLoginOpen={setLoginOpen}
      />
     ) : 
     (< OtherNavbar 
@@ -48,6 +50,8 @@ function App() {
     onRemove={onRemove} 
     onDelete={onDelete}  
     onDeleteAll={onDeleteAll}
+    setSignupOpen={setSignupOpen}
+     setLoginOpen={setLoginOpen}
      />
       )}
  
