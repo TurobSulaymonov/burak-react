@@ -1,29 +1,57 @@
-import {useState, SyntheticEvent} from "react";
+import {useState, SyntheticEvent, useEffect} from "react";
 import {Container, Stack, Box, Input} from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext"
 import LocatioOnIcon from "@mui/icons-material/LocationOn";
-import { Order } from "../../../lib/types/order";
+import { Order, OrderInquiry } from "../../../lib/types/order";
 import PausedOrders from "./PausedOrders";
 import FinishedOrders from "./FinishedOrders";
 import ProcessOrders from "./ProcessOrders";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setPauseOrders, setProcessOrders,  setFinishedOrders } from "./slice";
+import { setPausedOrders, setProcessOrders,  setFinishedOrders } from "./slice";
 
 import "../../../css/order.css";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import OrderService from "../../services/OrderServise";
+import ProceedOrders from "./ProcessOrders";
 
 /* REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
-  setPauseOrders: (data: Order[]) => dispatch(setPauseOrders(data)),
+  setPausedOrders: (data: Order[]) => dispatch(setPausedOrders(data)),
   setProcessOrders: (data: Order[]) => dispatch(setProcessOrders(data)),
   setFinishedOrders: (data: Order[]) => dispatch(setFinishedOrders(data)),
 });
 
 export default function OrderPage (){
-  const {setPauseOrders, setProcessOrders, setFinishedOrders} = actionDispatch(useDispatch());
+  const {setPausedOrders, setProcessOrders, setFinishedOrders} = actionDispatch(useDispatch());
   const [value, setValue] =useState("1");
+  const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
+    page:1,
+    limit: 5,
+    orderStatus: OrderStatus.PAUSE
+  })
+  useEffect(() => {
+  const order = new OrderService();
+  order
+  .getMyOrder({...orderInquiry, orderStatus:OrderStatus.PAUSE})
+  .then(data => setPausedOrders(data))
+  .catch((err) => console.log("Error", err))
+
+  order
+  .getMyOrder({...orderInquiry, orderStatus:OrderStatus.PROCESS})
+  .then(data => setProcessOrders(data))
+  .catch((err) => console.log("Error", err))
+
+  order
+  .getMyOrder({...orderInquiry, orderStatus:OrderStatus.FINISH})
+  .then(data => setFinishedOrders(data))
+  .catch((err) => console.log("Error", err))
+  }, [orderInquiry])
+  
+ 
+  /** HANDLER **/
   const handleChange = (e: SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
