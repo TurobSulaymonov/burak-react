@@ -16,6 +16,7 @@ import "../../../css/order.css";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import OrderService from "../../services/OrderServise";
 import ProceedOrders from "./ProcessOrders";
+import { useGlobals } from "../../hooks/useGlobal";
 
 /* REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -26,6 +27,7 @@ const actionDispatch = (dispatch: Dispatch) => ({
 
 export default function OrderPage (){
   const {setPausedOrders, setProcessOrders, setFinishedOrders} = actionDispatch(useDispatch());
+  const {orderBuilder} = useGlobals();
   const [value, setValue] =useState("1");
   const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
     page:1,
@@ -48,7 +50,7 @@ export default function OrderPage (){
   .getMyOrders({...orderInquiry, orderStatus:OrderStatus.FINISH})
   .then(data => setFinishedOrders(data))
   .catch((err) => console.log("Error", err))
-  }, [orderInquiry])
+  }, [orderInquiry, orderBuilder])
   
  
   /** HANDLER **/
@@ -75,8 +77,8 @@ export default function OrderPage (){
       </Box>
      </Box>
      <Stack className={"order-main-content"}>
-      <PausedOrders />
-      <ProcessOrders />
+      <PausedOrders setValue={setValue}/>
+      <ProcessOrders setValue={setValue} />
       <FinishedOrders />
 
      </Stack>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
 import { CartItem } from "../../lib/types/search";
-import { Order, OrderInquiry, OrderItemInput } from "../../lib/types/order";
+import { Order, OrderInquiry, OrderItemInput, OrderUpdateInput } from "../../lib/types/order";
 
 class OrderService{
     private readonly path: string;
@@ -18,7 +18,7 @@ class OrderService{
            productId: cartItems._id,
         };
        });
-        const url = this.path + "/order/create";
+        const url = `${this.path}/order/create`;
         const result = await axios.post(url, orderItems, { withCredentials: true }) ;
         console.log("createOrders", result);
         return result.data
@@ -41,6 +41,20 @@ class OrderService{
          }    
         catch (err) {
           console.log("ERROR GetMyOrders", err);
+          throw err;
+        }
+      }
+      public async updateOrder (input: OrderUpdateInput): Promise<Order>{
+        try{
+            console.log("updateOrder;", this.getMyOrders)
+            // axios.defaults.withCredentials = true;
+            const url = `${this.path}/order/update`;
+            const result = await axios.post(url, input, {withCredentials: true});
+            console.log("updateOrder", result);          
+            return result.data;
+         }    
+        catch (err) {
+          console.log("ERROR updateOrder", err);
           throw err;
         }
       }
