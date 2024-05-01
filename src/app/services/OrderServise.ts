@@ -28,9 +28,9 @@ class OrderService{
         throw err;
       }
     }
-    public async getMyOrder (input: OrderInquiry): Promise<Order[]>{
+    public async getMyOrders (input: OrderInquiry): Promise<Order[]>{
         try{
-            console.log("GetMyOrders;", this.getMyOrder)
+            console.log("GetMyOrders;", this.getMyOrders)
             // axios.defaults.withCredentials = true;
             const url = `${this.path}/order/all`;
             const query = `?page=${input.page}&limit=${input.limit}&orderStatus=${input.orderStatus}`;

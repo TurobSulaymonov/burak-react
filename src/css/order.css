@@ -210,9 +210,9 @@ width: 155px;
     max-height: 205px;
     margin-top: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: column;
-   overflow-y: scroll;
+     overflow-y: scroll;
     align-items: start;
   
   
@@ -234,6 +234,8 @@ width: 155px;
     width: 50px;
     height: 50px;
     border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
 
 
 }
@@ -253,7 +255,7 @@ width: 155px;
     font-family: "Commissioner";
     font-style: normal;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 36px;
     color: #000000;
 }
@@ -264,7 +266,7 @@ width: 155px;
     
 }
 .order-page .order-main-box .order-box-scroll .orders-name-price p{
-    text-align: center;
+    text-align: justify;
      margin: 10px 20px 0 30px;
      font-size: 22px;
      font-family: "Poppins";
@@ -285,7 +287,7 @@ width: 155px;
   margin-left: 150px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 
