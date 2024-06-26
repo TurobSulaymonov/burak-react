@@ -210,9 +210,9 @@ width: 155px;
     max-height: 205px;
     margin-top: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: column;
- 
+     overflow-y: scroll;
     align-items: start;
   
   
@@ -229,33 +229,45 @@ width: 155px;
 
 }
 
-.order-box-scroll img {
-    width: 50px;
-    height: 47px;
-    border-radius: 50px;
-}
+
 .order-page .order-main-box .order-box-scroll .orders-name-price .order-dish-img{
     width: 50px;
     height: 50px;
     border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
 
+
+}
+.order-box-scroll img {
+    width: 50px;
+    height: 47px;
+    border-radius: 50px;
+    margin-top: 10px;
 }
 
 .order-page .order-main-box .order-box-scroll .orders-name-price  .title-dish{
     position: relative;
     width: 260px;
     height: 32px;
-    margin-left: 20px;
+    margin-left: 60px;
+    margin-top: 10px;
     font-family: "Commissioner";
     font-style: normal;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 36px;
     color: #000000;
 }
+.order-page .order-main-box .order-box-scroll .orders-name-price img{
+    margin-top: 5px;
+    height: 32px;
+    margin-left: 5px;
+    
+}
 .order-page .order-main-box .order-box-scroll .orders-name-price p{
-    text-align: center;
-     margin: 10px 40px 0 34px;
+    text-align: justify;
+     margin: 10px 20px 0 30px;
      font-size: 22px;
      font-family: "Poppins";
      font-style: normal;
@@ -275,7 +287,7 @@ width: 155px;
   margin-left: 150px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 
